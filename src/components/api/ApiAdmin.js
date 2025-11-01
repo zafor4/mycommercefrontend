@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 export const createCategory=(token,data)=>{
-    return axios.post(`https://mycommerce-iy3p.onrender.com/api/category`,data,{
+    return axios.post(`${API}/category`,data,{
         headers:{
             'Content-Type':'application/json',
             'Authorization':`Bearer ${token}`
@@ -12,7 +12,7 @@ export const createCategory=(token,data)=>{
 }
 
 export const createProduct=(token,data)=>{
-    return axios.post(`https://mycommerce-iy3p.onrender.com/api/product`,data,{
+    return axios.post(`${API}/product`,data,{
         headers:{
             'Authorization':`Bearer ${token}`
         }
@@ -21,5 +21,5 @@ export const createProduct=(token,data)=>{
 }
 
 export const getCategories=()=>{
-    return axios.get("https://mycommerce-iy3p.onrender.com/api/category")
+    return axios.get(`${API}/category`)
 }

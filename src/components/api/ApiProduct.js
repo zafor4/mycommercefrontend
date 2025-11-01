@@ -1,16 +1,16 @@
-
+import { API } from '../../utils/config';
 import axios from 'axios';
 
 export const getProducts = (sortBy, order, limit) => {
-    return axios.get(`https://mycommerce-iy3p.onrender.com/api/product?sortBy=${sortBy}&order=${order}&limit=${limit}`)
+    return axios.get(`${API}/product?sortBy=${sortBy}&order=${order}&limit=${limit}`)
 }
 
 export const getProductDetails = (id) => {
-    return axios.get(`https://mycommerce-iy3p.onrender.com/api/product/${id}`)
+    return axios.get(`${API}/product/${id}`)
 }
 
 export const getCategories = () => {
-    return axios.get(`https://mycommerce-iy3p.onrender.com/api/category`)
+    return axios.get(`${API}/category`)
 }
 
 
@@ -22,7 +22,7 @@ export const getFilteredProducts = (skip, limit, filters = {}, order, sortBy) =>
         skip: skip,
         filters: { ...filters }
     }
-    return axios.post(`https://mycommerce-iy3p.onrender.com/api/product/filter`, data, {
+    return axios.post(`${API}/product/filter`, data, {
         headers: {
             "Content-Type": "application/json"
         }

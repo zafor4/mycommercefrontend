@@ -52,7 +52,6 @@ const Cart = () => {
   };
 
   const removeItem = (item) => {
-
     if (!window.confirm("Delete Item?")) return;
     deleteCartItem(userInfo().token, item)
       .then((response) => {
@@ -80,54 +79,59 @@ const Cart = () => {
           </li>
         </ol>
       </nav>
-      <div className="container my-5">
-        <table className="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col" width="15%">
-                #
-              </th>
-              <th scope="col">Image</th>
-              <th scope="col">Product Name</th>
-              <th scope="col">Quantity</th>
-              <th scope="col" align="right">
-                Price
-              </th>
-              <th scop="col">Remove</th>
-            </tr>
-          </thead>
-          <tbody>
-            {cartItems.map((item, i) => (
-              <CartItem
-                item={item}
-                serial={i + 1}
-                key={item._id}
-                increaseItem={() => increaseItem(item)}
-                decreaseItem={() => decreaseItem(item)}
-                removeItem={() => removeItem(item)}
-              />
-            ))}
-            <tr>
-              <th scope="row" />
-              <td colSpan={2}>Total</td>
-              <td align="right">৳ </td>
-              <td />
-            </tr>
-            <tr>
-              <th scope="row" />
-              <td colSpan={4} className="text-right">
-                <Link to="/">
-                  <button className="btn btn-warning mr-4">
-                    Continue Shoping
-                  </button>
-                </Link>
-                <Link to="/shipping" className="btn btn-success mr-4">
-                  Proceed To Checkout
-                </Link>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div style={{ marginTop: 20 }}>
+        <div style={{ overflowX: "auto" }}>
+          <table
+            className="table table-hover"
+            style={{ width: "100%", borderCollapse: "collapse" }}
+          >
+            <thead>
+              <tr>
+                <th scope="col" width="15%">
+                  #
+                </th>
+                <th scope="col">Image</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col" align="right">
+                  Price
+                </th>
+                <th scop="col">Remove</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cartItems.map((item, i) => (
+                <CartItem
+                  item={item}
+                  serial={i + 1}
+                  key={item._id}
+                  increaseItem={() => increaseItem(item)}
+                  decreaseItem={() => decreaseItem(item)}
+                  removeItem={() => removeItem(item)}
+                />
+              ))}
+              <tr>
+                <th scope="row" />
+                <td colSpan={2}>Total</td>
+                <td align="right">৳ </td>
+                <td />
+              </tr>
+              <tr>
+                <th scope="row" />
+                <td colSpan={4} className="text-right">
+                  <Link to="/">
+                    <button className="btn btn-warning mr-4">
+                      Continue Shoping
+                    </button>
+                  </Link>
+                  <Link to="/shipping" className="btn btn-success mr-4">
+                    Proceed To Checkout
+                  </Link>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </Layout>
   );

@@ -1,25 +1,38 @@
-import React, { Children } from 'react'
-import { useEffect } from 'react'
-import Menu from './Menu'
+import React from "react";
+import { useEffect } from "react";
+import Menu from "./Menu";
+import Footer from "./Footer";
 
+const Layout = ({ title = "Title", className, children }) => {
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
 
-
-const Layout = ({title='Title',className,children}) => {
-
-
-    useEffect(()=>{
-        document.title=title
-    },[])
   return (
     <div>
-        <div className='mb-3'>
-            <Menu/>
+      <header className="site-header">
+        <div
+          className="site-container"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            <div className="brand">MyCommerce</div>
+          </div>
+          <nav className="nav-links">
+            <Menu />
+          </nav>
         </div>
-        <div className={className}>
-            {children}
-        </div>
-    </div>
-  )
-}
+      </header>
 
-export default Layout
+      <main className={`site-container ${className || ""}`}>{children}</main>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default Layout;
